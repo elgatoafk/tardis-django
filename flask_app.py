@@ -1,12 +1,12 @@
-from flask import Flask, render_template, request
+from flask import Flask, render_template, request, session
 from processing import difference_calculator, convert, format_input
 from format_results import format_results
 
 app = Flask(__name__)
-
+# app.config["SECRET_KEY"] = "84RVb%625DA%6nf&2g4$P422EcdM"
 app.config["DEBUG"] = True
-@app.route("/", methods=["GET", "POST"])
-def est_time():
+@app.route("/", methods=["GET", "POST"]) #Flask view function
+def index():
     user_input = None
     formatted_input = None
     if request.method == "GET":
