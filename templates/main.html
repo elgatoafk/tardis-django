@@ -5,28 +5,16 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" integrity="sha512-dTfge/zgoMYpP7QbHy4gWMEGsbsdZeCXz7irItjcC3sPUFtf0kuFbDz/ixG7ArTxmDjLXDmezHubeNikyKGVyQ==" crossorigin="anonymous">
+        <link rel="stylesheet" type="text/css" href="/static/css/styles.css" filename='styles.css'>
         <script type="text/javascript" src="/event_listener.js"></script>
         <title>Tardis</title>
-        <style>
-        textarea:invalid {
-  border: 2px dashed red;
-}
 
-textarea:invalid:required {
-  background-image: linear-gradient(to right, pink,   #f5b041 );
-}
-
-textarea:valid {
-  border: 2px solid black;
-  background-image: linear-gradient(to right, lightgreen, lightblue);
-}
-</style>
 <script>document.getElementsByName("form").addEventListener("oninput", displayRadioValue);</script>
 
     </head>
 
     <body>
-        <h2 style="text-align: center;">Calculate time passed from submitted date and time</h2>
+        <h1 class="header-main">Calculate time passed from submitted date and time</h1>
         <nav class="navbar navbar-inverse">
         <form method="POST" name="form" onsubmit="displayRadioValue()" >
           <div class="container">
@@ -37,14 +25,14 @@ textarea:valid {
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
               </button>
-              <input class="main-menu" type="radio" name="time-zone" value="America/New York"  checked>
-              <label class="main-menu" for="America/New York" style="color: white; font-size: 14px;">EST time zone| New York</label>
-              <input class="main-menu" type="radio" name="time-zone" value="Europe/London">
-              <label class="main-menu" for="Europe/London"style="color: white; font-size: 14px;">UTC time zone| London</label>
-              <input class="main-menu" type="radio" name="time-zone" value="Europe/Kyiv">
-              <label class="main-menu" for="Europe/Kiev" style="color: white; font-size: 14px;">UA Time</label>
-              <input class="main-menu" type="radio" name="time-zone" value="Asia/Calcutta">
-              <label class="main-menu" for="Asia/Calcutta" style="color: white; font-size: 14px;">IN Time</label>
+              <label ><input class="main-menu" type="radio" name="time-zone" value="America/New York"  checked>EST time zone| New York</label>
+
+              <label><input class="main-menu" type="radio" name="time-zone" value="Europe/London">UTC time zone| London</label>
+
+              <label><input class="main-menu" type="radio" name="time-zone" value="Europe/Kyiv">UA Time</label>
+
+              <label><input class="main-menu" type="radio" name="time-zone" value="Asia/Calcutta">IN Time</label>
+
               </div>
           </div>
         </nav>
@@ -52,7 +40,7 @@ textarea:valid {
                     <div class="container">
                                 <div class="row">
                     <label for="submit">Enter date and time:</label>
-                    <textarea class="form-control" name="contents" placeholder="Enter date and time from Admin Order List..." required autocomplete="off"></textarea>
+                    <textarea class="form-control" name="contents" id="main-form" placeholder="Enter date and time from Admin Order List..." required autocomplete="off"></textarea>
                     <input type="submit" class="btn btn-success"autocomplete="off" value="Submit" >
                     </div>
                     </div>
@@ -64,8 +52,8 @@ textarea:valid {
             <p> Sadly, Tardis is still confused around dates and times that are in the future, please do not upset her.</p>
     </div>
 
-        <div class="container" style="color: green; font-size: 16px;">
-            <p> Date entered: {{entered_date}}</p>
+        <div class="container">
+            <p class="date-text"> Date entered: {{entered_date}}</p>
     </div>
 
         <div class="container">
