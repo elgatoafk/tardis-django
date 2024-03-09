@@ -34,3 +34,20 @@ def difference_calculator(user_time: datetime) -> timedelta | str:
         # make an additional alert that the date is in future
         return user_time - datetime.now(tz=tz.gettz("Europe/London"))
     return datetime.now(tz=tz.gettz("Europe/London")) - user_time
+
+
+def format_results(delta: timedelta, pattern: str) -> str:
+    """format_results Formats the given time difference using the specified pattern.
+
+    :param delta: The time difference to format.
+    :type delta: timedelta
+    :param pattern: The pattern to use for formatting the time difference.
+    The pattern can include placeholders for days, hours, minutes, and seconds.
+    :type pattern: str
+    :return: The formatted time difference.
+    :rtype: str
+    """
+    d = {"d": delta.days}
+    d["h"], rem = divmod(delta.seconds, 3600)
+    d["m"], d["s"] = divmod(rem, 60)
+    return pattern.format(**d)
