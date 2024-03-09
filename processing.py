@@ -51,3 +51,14 @@ def format_results(delta: timedelta, pattern: str) -> str:
     d["h"], rem = divmod(delta.seconds, 3600)
     d["m"], d["s"] = divmod(rem, 60)
     return pattern.format(**d)
+
+
+def format_input(time_input: datetime) -> str:
+    """format_input Formats the given datetime object into a specific string representation.
+
+    :param time_input: The datetime object to format.
+    :type time_input: datetime
+    :return: The formatted string representation of the datetime object.
+    :rtype: str
+    """
+    return time_input.strftime("%H:%M:%S %d %B %Y (%A)")
