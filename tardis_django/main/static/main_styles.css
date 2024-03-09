@@ -1,0 +1,36 @@
+h1.header-main {
+  text-align: center;
+  font-size: 30px;
+}
+
+#main-form.form-control:invalid {
+  border: 2px dashed red;
+}
+
+#main-form.form-control:invalid:required {
+  background-image: linear-gradient(to right, pink, #f5b041);
+}
+
+#main-form.form-control:valid {
+  border: 2px solid black;
+  background-image: linear-gradient(to right, lightgreen, lightblue);
+}
+
+label {
+  color: white;
+  font-size: 14px;
+  padding-right: 50px;
+}
+
+div.result-text {
+  color: blue;
+  font-size: 16px;
+}
+div.error-text {
+  color: red;
+  font-size: 20px;
+}
+p.date-text {
+  color: green;
+  font-size: 16px;
+}

@@ -1,0 +1,84 @@
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" integrity="sha512-dTfge/zgoMYpP7QbHy4gWMEGsbsdZeCXz7irItjcC3sPUFtf0kuFbDz/ixG7ArTxmDjLXDmezHubeNikyKGVyQ==" crossorigin="anonymous">
+        <!-- <link rel="stylesheet" type="text/css" href="{% static 'main_styles.css' %}" filename='main_styles.css'> -->
+        <script type="text/javascript" src="/event_listener.js"></script>
+        <title>Tardis</title>
+
+<script>document.getElementsByName("form").addEventListener("oninput", displayRadioValue);</script>
+
+    </head>
+
+    <body>
+        <h1 class="header-main">Calculate time passed from submitted date and time</h1>
+        <nav class="navbar navbar-inverse">
+        <form method="POST" name="form" onsubmit="displayRadioValue()" >
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              <label ><input class="main-menu" type="radio" name="time-zone" value="America/New York"  checked>EST time zone| New York</label>
+
+              <label><input class="main-menu" type="radio" name="time-zone" value="Europe/London">UTC time zone| London</label>
+
+              <label><input class="main-menu" type="radio" name="time-zone" value="Europe/Kyiv">UA Time</label>
+
+              <label><input class="main-menu" type="radio" name="time-zone" value="Asia/Calcutta">IN Time</label>
+
+              </div>
+          </div>
+        </nav>
+
+                    <div class="container">
+                                <div class="row">
+                    <label for="submit">Enter date and time:</label>
+                    <textarea class="form-control" name="contents" id="main-form" placeholder="Enter date and time from Admin Order List..." required autocomplete="off"></textarea>
+                    <input type="submit" class="btn btn-success"autocomplete="off" value="Submit" >
+                    </div>
+                    </div>
+        </form>
+
+
+
+<div class="container" style="color: grey; font-size: 16px;">
+            <p> Sadly, Tardis is still confused around dates and times that are in the future, please do not upset her.</p>
+    </div>
+
+        <div class="container">
+            <p class="date-text"> Date entered: {{entered_date}}</p>
+    </div>
+
+        <div class="container">
+            {% include 'error.html' %}
+
+         </div>
+<script>function displayRadioValue() {
+            var ele = document.getElementsByName("time-zone");
+
+            for (i = 0; i < ele.length; i++) {
+                if (ele[i].checked)
+                    document.getElementsByID("final-zone")
+                        = "Results shown for " + ele[i].value +" time zone.";
+            }
+        }</script>
+
+        </div>
+
+        <div class="container">
+            {% include 'result.html' %}
+
+         </div>
+
+         <div id="final-zone"></div>
+
+
+    </body>
+</html>
