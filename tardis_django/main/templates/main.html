@@ -1,6 +1,7 @@
-<!DOCTYPE html>
+{% load static %} <!DOCTYPE html>
+
 <html>
-    {% load static %}
+    
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -8,7 +9,7 @@
 
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" integrity="sha512-dTfge/zgoMYpP7QbHy4gWMEGsbsdZeCXz7irItjcC3sPUFtf0kuFbDz/ixG7ArTxmDjLXDmezHubeNikyKGVyQ==" crossorigin="anonymous">
         <link rel="stylesheet" type="text/css" href="{% static 'main/main_styles.css' %}">
-        <script type="text/javascript" src="/event_listener.js"></script>
+        <script type="text/javascript" src="{% static '/event_listener.js' %}"></script>
         <title>Tardis</title>
 
 <script>document.getElementsByName("form").addEventListener("oninput", displayRadioValue);</script>
@@ -18,7 +19,8 @@
     <body>
         <h1 class="header-main">Calculate time passed from submitted date and time</h1>
         <nav class="navbar navbar-inverse">
-        <form method="POST" name="form" onsubmit="displayRadioValue()" >
+        <form method="POST" name="TimeForm" onsubmit="displayRadioValue()" >
+            {% csrf_token %}
           <div class="container">
             <div class="navbar-header">
               <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">

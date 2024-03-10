@@ -2,22 +2,25 @@ from datetime import datetime, timedelta
 from dateutil import parser, tz
 
 
-def convert(time_input: str, zone: str) -> datetime | None:
+class ConversionError(Exception):
+    def __init__(self):
+        self.message = "Incorrect input, please check"
+        super().__init__(self.message)
+
+
+def convert(time_input: str, zone: str) -> datetime:
     """convert Converts a string representation of time to a datetime object with the specified timezone.
 
     :param time_input: The string representation of time to convert.
     :type time_input: str
     :param zone: The timezone to apply to the converted datetime object.
     :type zone: str
-    :return: The converted datetime object with the specified timezone, or None if the conversion fails.
-    :rtype: datetime | None
+    :return: The converted datetime object with the specified timezone
+    :rtype: datetime
     """
-    try:
-        time_input = parser.parse(time_input)
-        return time_input.replace(tzinfo=tz.gettz(zone))
 
-    except ValueError:
-        return None
+    time_input = parser.parse(time_input)
+    return time_input.replace(tzinfo=tz.gettz(zone))
 
 
 def difference_calculator(user_time: datetime) -> timedelta | str:
